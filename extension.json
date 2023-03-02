@@ -1,22 +1,26 @@
 {
-  "name": "HTML/CSS/JS Replit Extension Starter",
-  "description": "A starter template for a Replit Extension with HTML, CSS, and JavaScript",
+  "name": "Git Diff Viewer",
+  "description": "A simple Replit extension for viewing .diff files",
   "version": "0",
-  "tags": [""],
-  "icon": "",
-  "supportEmail": "",
-  "website": "",
-  "longDescription": "",
+  "tags": [
+    "git",
+    "diff"
+  ],
+  "icon": "icon.svg",
+  "supportEmail": "admin@vocabustudy.org",
+  "website": "https://Git-Diff-Viewer-Extension.grimsteel.repl.co",
+  "longDescription": "A simple extension that allows you to view a rich diff from a .diff file.\nFeatures:\n* Syntax highlighting\n\nPowered by [diff2html](https://github.com/rtfpessoa/diff2html)",
   "coverImages": [
     {
-      "url": "",
-      "label": ""
+      "url": "icon.svg",
+      "label": "temp"
     }
   ],
   "fileHandlers": [
     {
-      "glob": "",
-      "handler": ""
+      "glob": "*.diff",
+      "handler": "index.html",
+      "name": "Diff Viewer"
     }
   ]
 }

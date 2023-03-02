@@ -6,14 +6,73 @@
   <meta name="viewport" content="width=device-width">
   <title>Git Diff Viewer</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="icon.svg" />
   <!-- Loads the Extensions API -->
   <script src="https://unpkg.com/@replit/extensions"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
+  <link rel="stylesheet" href="https://replitcss.codingmaster398.repl.co/replit.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html@3.4.31/bundles/js/diff2html.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/path-browserify@1.0.1/index.min.js"></script>
+  <script src="diff-viewer.js"></script>
+  <style>
+    nav > button.colored {
+      background-color: var(--accent-brown-dimmer);
+      margin-left: auto;
+    }
+    #file-list > div {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      font-family: monospace;
+      margin-top: 1rem;
+    }
+    #file-list > div > div {
+      display: flex;
+      gap: 8px;
+    }
+    #file-list > div > div:not(.unselectable) {
+      cursor: pointer;
+    }
+    .unselectable {
+      opacity: 0.5;
+    }
+    .unselectable > span:first-child {
+      width: 16px;
+    }
+    .folder-icon {
+      fill: white;
+      width: 16px;
+      height: 16px;
+    }
+    #file-list img {
+      outline: 0;
+    }
+  </style>
 </head>
 
 <body>
-  Loading...
-  <script src="script.js"></script>
+  <svg preserveAspectRatio="xMidYMin" style="display: none;"><symbol id="folder"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 3.75C3.66848 3.75 3.35054 3.8817 3.11612 4.11612C2.8817 4.35054 2.75 4.66848 2.75 5V19C2.75 19.3315 2.8817 19.6495 3.11612 19.8839C3.35054 20.1183 3.66848 20.25 4 20.25H20C20.3315 20.25 20.6495 20.1183 20.8839 19.8839C21.1183 19.6495 21.25 19.3315 21.25 19V8C21.25 7.66848 21.1183 7.35054 20.8839 7.11612C20.6495 6.8817 20.3315 6.75 20 6.75H11C10.7492 6.75 10.5151 6.62467 10.376 6.41603L8.59861 3.75H4ZM2.05546 3.05546C2.57118 2.53973 3.27065 2.25 4 2.25H9C9.25076 2.25 9.48494 2.37533 9.62404 2.58397L11.4014 5.25H20C20.7293 5.25 21.4288 5.53973 21.9445 6.05546C22.4603 6.57118 22.75 7.27065 22.75 8V19C22.75 19.7293 22.4603 20.4288 21.9445 20.9445C21.4288 21.4603 20.7293 21.75 20 21.75H4C3.27065 21.75 2.57118 21.4603 2.05546 20.9445C1.53973 20.4288 1.25 19.7293 1.25 19V5C1.25 4.27065 1.53973 3.57118 2.05546 3.05546Z"></path></symbol></svg>
+  <nav>
+    Git Diff Viewer
+    <button class="colored">Created by @grimsteel</button>
+  </nav>
+  <div class="content">
+    <p id="loading-msg">Loading...</p>
+    <div id="welcome" hidden>
+      <h1>A super simple Git Diff viewer for your Repls</h1>
+      <diff-viewer id="teaser-diff"></diff-viewer>
+    </div>
+    <div id="file-list" hidden>
+      <h4>Choose a diff/patch file to view:</h3>
+      <input id="current-folder" type="text" disabled value="." />
+      <div></div>
+    </div>
+    <div id="viewer" hidden>
+      <h4 id="diff-filename"></h4>
+      <hr/>
+      <diff-viewer id="main-diff"></diff-viewer>
+    </div>
+  </div>
+  <script src="index.js"></script>
 </body>
 
 </html>
