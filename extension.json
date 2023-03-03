@@ -21,11 +21,6 @@
       "glob": "*.diff",
       "handler": "index.html",
       "name": "Diff Viewer"
-    },
-    {
-      "glob": "*.diff",
-      "handler": "index.html",
-      "name": "Diff Viewer"
     }
   ]
 }

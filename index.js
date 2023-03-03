@@ -63,7 +63,7 @@ async function showFile(filePath) {
     els.diffFilename.innerText = filePath;
     els.main.loadDiff(content);
     stopWatching();
-    let updateDebounced = debounce(({ newContent }) => els.main.loadDiff(newContent));
+    let updateDebounced = debounce(({ latestContent }) => els.main.loadDiff(latestContent));
     stopWatching = await replit.fs.watchTextFile(filePath, { 
       onChange: updateDebounced,
       onMoveOrDelete: () => stopWatching()
