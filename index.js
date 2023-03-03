@@ -84,7 +84,7 @@ async function refreshFileList() {
         });
       } else {
         let iconEl = document.createElement("span");
-        if (child.filename.split(".").pop().toLowerCase() !== "diff")
+        if (!["diff", "patch"].includes(child.filename.split(".").pop().toLowerCase()))
           childEl.classList.add("unselectable");
         else {
           iconEl = createFileIcon();

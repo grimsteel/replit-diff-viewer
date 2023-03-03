@@ -20,7 +20,14 @@
     {
       "glob": "*.diff",
       "handler": "index.html",
-      "name": "Diff Viewer"
+      "name": "Diff Viewer",
+      "icon": "icon.svg"
+    },
+    {
+      "glob": "*.patch",
+      "handler": "index.html",
+      "name": "Diff Viewer",
+      "icon": "icon.svg"
     }
   ]
 }
