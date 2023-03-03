@@ -8,7 +8,7 @@
   ],
   "icon": "icon.svg",
   "supportEmail": "admin@vocabustudy.org",
-  "website": "https://Git-Diff-Viewer-Extension.grimsteel.repl.co",
+  "website": "https://grimsteel.github.io/replit-diff-viewer",
   "longDescription": "A simple extension that allows you to view a rich diff from a .diff file.\nFeatures:\n* Rich diffs (red/green highlighting)\n* Character counts\n\nTo use the extension, right click on a .diff file and open it in Diff Viewer. Or, open the extension's pane and browse to a .diff file\n\nPowered by [diff2html](https://github.com/rtfpessoa/diff2html)",
   "coverImages": [
     {
