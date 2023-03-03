@@ -9,14 +9,19 @@
   "icon": "icon.svg",
   "supportEmail": "admin@vocabustudy.org",
   "website": "https://Git-Diff-Viewer-Extension.grimsteel.repl.co",
-  "longDescription": "A simple extension that allows you to view a rich diff from a .diff file.\nFeatures:\n* Syntax highlighting\n\nPowered by [diff2html](https://github.com/rtfpessoa/diff2html)",
+  "longDescription": "A simple extension that allows you to view a rich diff from a .diff file.\nFeatures:\n* Rich diffs (red/green highlighting)\n* Character counts\n\nTo use the extension, right click on a .diff file and open it in Diff Viewer. Or, open the extension's pane and browse to a .diff file\n\nPowered by [diff2html](https://github.com/rtfpessoa/diff2html)",
   "coverImages": [
     {
-      "url": "icon.svg",
-      "label": "temp"
+      "url": "cover.png",
+      "label": "Screenshot of an example diff file being viewed"
     }
   ],
   "fileHandlers": [
+    {
+      "glob": "*.diff",
+      "handler": "index.html",
+      "name": "Diff Viewer"
+    },
     {
       "glob": "*.diff",
       "handler": "index.html",

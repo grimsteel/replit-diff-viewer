@@ -20,6 +20,7 @@ let stopWatching = () => {};
 * @param {boolean} debug
 */
 async function handshake(timeoutMs=1000, debug=false) {
+  if (window === window.top) return Promise.reject("Top level window");
   return await Promise.race([
     replit.init({
       permissions: [
@@ -48,11 +49,11 @@ function createFileIcon() {
   return img;
 }
 
-function debounce(func){
+function debounce(func) {
   let timer;
-  return () => {
+  return (...args) => {
     clearTimeout(timer);
-    timer = setTimeout(() => func(), 300);
+    timer = setTimeout(() => func(...args), 300);
   };
 }
 
@@ -61,6 +62,12 @@ async function showFile(filePath) {
   if (!error) {
     els.diffFilename.innerText = filePath;
     els.main.loadDiff(content);
+    stopWatching();
+    let updateDebounced = debounce(({ newContent }) => els.main.loadDiff(newContent));
+    stopWatching = await replit.fs.watchTextFile(filePath, { 
+      onChange: updateDebounced,
+      onMoveOrDelete: () => stopWatching()
+    });
   }
 }
 
