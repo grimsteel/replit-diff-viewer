@@ -21,17 +21,14 @@ let stopWatching = () => {};
 */
 async function handshake(timeoutMs=1000, debug=false) {
   if (window === window.top) return Promise.reject("Top level window");
-  return await Promise.race([
-    replit.init({
-      permissions: [
-        "writeFile",
-        "readFile"
-      ],
-      timeout: timeoutMs,
-      debug
-    }),
-    new Promise((_, reject) => setTimeout(() => reject(), timeoutMs))
-  ])
+  return replit.init({
+    permissions: [
+      "writeFile",
+      "readFile"
+    ],
+    timeout: timeoutMs,
+    debug
+  })
 }
 
 function createFolderIcon() {
@@ -105,14 +102,14 @@ async function refreshFileList() {
 
 async function loadExtension() {
   try {
-    await handshake(1000, true);
+    await handshake(2000);
   } catch {
     els.welcome.hidden = false;
     return;
   } finally {
     els.loadingMsg.hidden = true;
   }
-  let selectedFile = await replit.extensionPort.filePath;
+  let selectedFile = await replit.me.filePath();
   if (selectedFile) {
     els.viewer.hidden = false;
     await showFile(selectedFile);
