@@ -5,7 +5,7 @@ class DiffViewer extends HTMLElement {
     let shadow = this.attachShadow({ mode: "open" });
     let stylesheetEl = shadow.appendChild(document.createElement("link"));
     stylesheetEl.rel = "stylesheet";
-    stylesheetEl.href = "https://cdn.jsdelivr.net/npm/diff2html@3.4.31/bundles/css/diff2html.min.css";
+    stylesheetEl.href = "https://cdn.jsdelivr.net/npm/diff2html@3.4.32/bundles/css/diff2html.min.css";
     shadow.appendChild(document.createElement("style")).innerText = `
       .d2h-wrapper {
         color: initial;
@@ -16,7 +16,6 @@ class DiffViewer extends HTMLElement {
         filter: invert(1);
         background-color: black;
       }
-      .d2h-code-line {width: calc(100% - 16em);}
       .d2h-code-line del {
         background-color: #b8fffb;
       }
